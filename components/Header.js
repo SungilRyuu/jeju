@@ -7,15 +7,15 @@ export default function Header() {
   return (
     <NaviWrap>
       <Link href="/" passHref>
-        <Logo>
-          걸어서... <Strong>제주도여행을</Strong>
-        </Logo>
+        <Logo>가자, 제주도</Logo>
       </Link>
       <NaviWrapper>
         <Link href="/main" passHref>
           <Navi>about</Navi>
         </Link>
-        <Navi>카페</Navi>
+        <Link href="/food" passHref>
+          <Navi>음식</Navi>
+        </Link>
         <Link href="/nature" passHref>
           <Navi>문화재</Navi>
         </Link>
@@ -31,24 +31,28 @@ const NaviWrap = styled.div`
   padding: 1vw;
 `;
 const Logo = styled.h1`
-  font-family: "Gugi", sans-serif;
-  text-shadow: 1px 2px 3px black;
-  margin-right: auto;
-  color: #e8e25d;
-  font-size: 3vw;
+  font-size: 30px;
   cursor: default;
+  font-family: "Poppins";
+  font-weight: 100;
+
+  @media screen and (max-width: 700px) {
+    display: none;
+  }
 `;
-const Strong = styled.span`
-  color: #5678e1;
-`;
+const Strong = styled.span``;
 const NaviWrapper = styled.div`
   display: flex;
   align-items: center;
+  margin-left: auto;
 `;
 const Navi = styled.a`
-  font-family: "Gugi", sans-serif;
-  text-shadow: 1px 2px 3px black;
-  margin: 0 1vw;
-  font-size: 2.5vw;
-  color: #a5a5a5;
+  margin: 0 30px;
+  font-size: 20px;
+  font-weight: 100;
+  font-family: "Poppins";
+
+  @media screen and (max-width: 700px) {
+    margin: 0 20px;
+  }
 `;

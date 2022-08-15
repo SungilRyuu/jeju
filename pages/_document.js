@@ -1,12 +1,14 @@
-import Document, { DocumentContext } from "next/document";
+import Document, { Html, Head, Main, NextScript } from "next/document";
+import React from "react";
 import { ServerStyleSheet } from "styled-components";
 
-class CustomDocument extends Document {
+export default class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const sheet = new ServerStyleSheet();
     const originalRenderPage = ctx.renderPage;
 
     try {
+      //css를 ssr해주는 메소드
       ctx.renderPage = () =>
         originalRenderPage({
           enhanceApp: (App) => (props) =>
@@ -14,7 +16,6 @@ class CustomDocument extends Document {
         });
 
       const initialProps = await Document.getInitialProps(ctx);
-
       return {
         ...initialProps,
         styles: (
@@ -25,11 +26,23 @@ class CustomDocument extends Document {
         ),
       };
     } catch (error) {
-      throw error;
+      console.log(error);
     } finally {
       sheet.seal();
     }
   }
-}
 
-export default CustomDocument;
+  render() {
+    return (
+      <Html>
+        <Head>
+          <body>
+            <Main />
+            <script src="https://polyfill.io/v3/polyfill.min.js?features=default%2Ces2015%2Ces2016%2Ces2017%2Ces2018%2Ces2019" />
+            <NextScript />
+          </body>
+        </Head>
+      </Html>
+    );
+  }
+}

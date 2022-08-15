@@ -49,6 +49,10 @@ const Title = styled.h1`
   text-shadow: 4px 4px 6px black;
   position: relative;
   background-color: transparent;
+
+  @media screen and (min-width: 1200px) {
+    font-size: 105px;
+  }
 `;
 
 const DifferentColor = styled.span`
@@ -64,6 +68,12 @@ const EarthSvg = styled.div`
   right: 3vw;
   top: 0;
   background-color: transparent;
+
+  @media screen and (min-width: 1200px) {
+    width: 130px;
+    height: 130px;
+  }
+
   &:hover {
     filter: contrast(500%);
     transition: all 0.3s ease;
